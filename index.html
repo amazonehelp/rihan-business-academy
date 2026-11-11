@@ -258,6 +258,42 @@ nav{width:100%;justify-content:space-between}
 
 </main>
 
+<section id="student-login" style="padding:40px 20px; text-align:center;">
+  <div class="wrap">
+    <h2>Student Login / Registration</h2>
+    <p>Create your account or login to access your course.</p>
+
+    <form id="studentAuthForm" style="max-width:400px; margin:auto;">
+      <input
+        type="email"
+        id="studentEmail"
+        placeholder="Enter your email"
+        required
+        style="width:100%; padding:14px; margin:10px 0;"
+      >
+
+      <input
+        type="password"
+        id="studentPassword"
+        placeholder="Create password (minimum 6 characters)"
+        minlength="6"
+        required
+        style="width:100%; padding:14px; margin:10px 0;"
+      >
+
+      <button type="button" id="studentSignup">
+        Register
+      </button>
+
+      <button type="button" id="studentLogin">
+        Login
+      </button>
+
+      <p id="authMessage"></p>
+    </form>
+  </div>
+</section>
+
 <footer>
 <div class="wrap">
 <strong>RIHAN BUSINESS ACADEMY</strong><br>
