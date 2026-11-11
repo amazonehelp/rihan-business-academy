@@ -267,35 +267,29 @@ Learn. Launch. Grow.<br>
 </footer>
 
 <script>
-// IMPORTANT: Replace this placeholder with your WhatsApp number.
-// Example: "919876543210" (country code + number, digits only)
+const ACADEMY_WHATSAPP_NUMBER = "919259521420";
 
-const ACADEMY_WHATSAPP_NUMBER = "9259521420";
 document.getElementById("enrollForm").addEventListener("submit", function(e) {
-e.preventDefault();
+    e.preventDefault();
 
-const n = document.getElementById("name").value.trim();
-const p = document.getElementById("phone").value.trim();
-const level = document.getElementById("level").value;
-const msg = document.getElementById("message").value.trim();
+    const n = document.getElementById("name").value.trim();
+    const p = document.getElementById("phone").value.trim();
+    const level = document.getElementById("level").value;
+    const msg = document.getElementById("message").value.trim();
 
-const text = `Hello Rihan Business Academy, I want to enroll in the Amazon Business Course (₹999).
+    const text = `Hello Rihan Business Academy, I want to enroll in the Amazon Business Course (₹999).
 Name: ${n}
 My WhatsApp: ${p}
 Experience: ${level}
 Question: ${msg || "None"}`;
 
-if (ACADEMY_WHATSAPP_NUMBER === 9259521420 
-alert("Enrollment form is ready. Please add your WhatsApp number in the website code to receive enquiries.");
-return;
-}
+    const whatsappURL = "https://wa.me/" + ACADEMY_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
 
-window.open(
-`https://wa.me/${ACADEMY_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
-"_blank"
-);
+    window.open(whatsappURL, "_blank");
 });
 </script>
+
+< nu
 
 </body>
 </html>
