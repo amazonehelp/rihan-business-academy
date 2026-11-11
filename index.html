@@ -327,5 +327,81 @@ Question: ${msg || "None"}`;
 
 < nu
 
+<!-- Supabase connection -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+(function () {
+  const SUPABASE_URL = "https://mnzmtspqvvhximwwsnme.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_pWFzEgGykHxxwQj8MilCSg_o7WN3ZZT";
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const message = document.getElementById("authMessage");
+
+  function showMessage(text) {
+    message.textContent = text;
+  }
+
+  document.getElementById("studentSignup").addEventListener("click", async function () {
+    const email = document.getElementById("studentEmail").value.trim();
+    const password = document.getElementById("studentPassword").value;
+
+    if (!email || password.length < 6) {
+      showMessage("Enter a valid email and password of at least 6 characters.");
+      return;
+    }
+
+    showMessage("Creating your account...");
+
+    const { data, error } = await client.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        emailRedirectTo: "https://amazonehelp.github.io/rihan-business-academy/"
+      }
+    });
+
+    if (error) {
+      showMessage(error.message);
+      return;
+    }
+
+    if (data.session) {
+      showMessage("Registration successful! You can now log in.");
+    } else {
+      showMessage("Registration submitted. Please check your email to verify your account.");
+    }
+  });
+
+  document.getElementById("studentLogin").addEventListener("click", async function () {
+    const email = document.getElementById("studentEmail").value.trim();
+    const password = document.getElementById("studentPassword").value;
+
+    if (!email || !password) {
+      showMessage("Please enter your email and password.");
+      return;
+    }
+
+    showMessage("Logging in...");
+
+    const { data, error } = await client.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      showMessage(error.message);
+      return;
+    }
+
+    showMessage("Login successful! Welcome to Rihan Business Academy.");
+  });
+})();
+</script>
+
 </body>
 </html>
